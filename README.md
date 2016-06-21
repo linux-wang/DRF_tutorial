@@ -11,10 +11,12 @@ PS：其实我开始也很好奇是什么意思，之前一直在用Django，也
 
 ##### requirements
 REST framework requires the following:
+
 1. Python (2.7, 3.2, 3.3, 3.4, 3.5)
 2. Django (1.7+, 1.8, 1.9)
 
 The following packages are optional:
+
 1. Markdown (2.1.0+) - Markdown support for the browsable API.
 2. django-filter (0.9.2+) - Filtering support.
 3. django-crispy-forms - Improved HTML display for filtering.
@@ -32,16 +34,13 @@ pip install django-filter  # Filtering support```
 2. Add 'rest_framework' to your INSTALLED_APPS setting（默认创建了Django项目，没有创建使用django-admin startproject xxx命令来创建，同时python manage.py migrate数据库，创建superuser等）.
 
 ```INSTALLED_APPS = (
-    ....
     'rest_framework',
 )```
 
 3. If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
 
-```urlpatterns = [
-    ...
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]```
+    urlpatterns = [
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))]
 
 ##### example
 准备工作前边已经做完了，下面开始正式的例子，利用DR创建一个关于自带的User Model的API，实现的功能是创建user和获取user列表。
@@ -49,9 +48,6 @@ pip install django-filter  # Filtering support```
 1. DRF全局配置放在一个名为REST_FRAMEWORK的字典中，字典放在settings.py下面，如下：
 
 ```REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    
-    # or allow read-only access for unauthenticated users.
     
     'DEFAULT_PERMISSION_CLASSES': [
     
@@ -80,30 +76,24 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')```
         
 4. 修改views.py
-5. 
-    from django.contrib.auth.models import User, Group
+
+```from django.contrib.auth.models import User, Group
     from rest_framework import viewsets
     from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
 
 class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer```
 
 5. 修改urls
     
-    from django.conf.urls import url, include
+    ```from django.conf.urls import url, include
     
     from rest_framework import routers
     
@@ -114,12 +104,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     router.register(r'users', views.UserViewSet)
     
     router.register(r'groups', views.GroupViewSet)
-    # Wire up our API using automatic URL routing.
-    # Additionally, we include login URLs for the browsable API.
+
     urlpatterns = [
         url(r'^', include(router.urls)),
+        
         url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-    ]
+    ]```
 
 5. test
 使用```python manage.py runserver```运行项目，浏览器打开```127.0.0.1```
