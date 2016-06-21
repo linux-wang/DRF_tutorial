@@ -32,7 +32,7 @@ pip install django-filter  # Filtering support```
 2. Add 'rest_framework' to your INSTALLED_APPS setting（默认创建了Django项目，没有创建使用django-admin startproject xxx命令来创建，同时python manage.py migrate数据库，创建superuser等）.
 
 ```INSTALLED_APPS = (
-    ...
+    ....
     'rest_framework',
 )```
 
