@@ -27,27 +27,33 @@ The following packages are optional:
 ##### install
 1. Install using pip, including any optional packages you want...
 
-```pip install djangorestframework
+```
+pip install djangorestframework
 pip install markdown      
-pip install django-filter  ```
+pip install django-filter  
+```
 
 2. Add rest_framework to your INSTALLED_APPS setting（默认创建了Django项目，没有创建使用django-admin startproject xxx命令来创建，同时python manage.py migrate数据库，创建superuser等）.
 
-```INSTALLED_APPS = (
+```
+INSTALLED_APPS = (
     'rest_framework',
-)```
+)
+```
 
 3. If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
-
+```
     urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))]
+```
 
 ##### example
 准备工作前边已经做完了，下面开始正式的例子，利用DR创建一个关于自带的User Model的API，实现的功能是创建user和获取user列表。
 
 1. DRF全局配置放在一个名为REST_FRAMEWORK的字典中，字典放在settings.py下面，如下：
 
-```REST_FRAMEWORK = {
+```
+    REST_FRAMEWORK = {
     
     'DEFAULT_PERMISSION_CLASSES': [
     
@@ -55,12 +61,14 @@ pip install django-filter  ```
         
         'PAGE_SIZE': 10
     ]
-}```
+}
+```
 
 2. 使用django-admin startapp xxx命令创建一个Django app，本文使用quickstart名称。
 3. define some serializers（不知道怎么翻译这个词比较好）.创建```quickstart/serializers.py```文件，内容如下：
 
-```from django.contrib.auth.models import User, Group
+```
+from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
 
@@ -73,11 +81,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
-        fields = ('url', 'name')```
+        fields = ('url', 'name')
+```
         
 4. 修改views.py
 
-```from django.contrib.auth.models import User, Group
+```
+    from django.contrib.auth.models import User, Group
     from rest_framework import viewsets
     from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
 
@@ -89,11 +99,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
-    serializer_class = GroupSerializer```
+    serializer_class = GroupSerializer
+```
 
 5. 修改urls
     
-    ```from django.conf.urls import url, include
+```
+    from django.conf.urls import url, include
     
     from rest_framework import routers
     
@@ -109,7 +121,8 @@ class GroupViewSet(viewsets.ModelViewSet):
         url(r'^', include(router.urls)),
         
         url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-    ]```
+    ]
+```
 
 6. test
 使用```python manage.py runserver```运行项目，浏览器打开```127.0.0.1```
