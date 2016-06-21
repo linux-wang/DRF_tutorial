@@ -7,7 +7,7 @@
 
 PS：其实我开始也很好奇是什么意思，之前一直在用Django，也知道REST，然后写的接口也是在按照这个原则来写的，为什么又多了个DRF呢？我也十分不理解，然后就有了这个项目（其实只是按照官方文档做了一下就大概了解了）
 
-#### 快速入门(摘字[官方文档](http://www.django-rest-framework.org/))
+#### 快速入门(摘自[官方文档](http://www.django-rest-framework.org/))
 
 ##### requirements
 REST framework requires the following:
@@ -28,10 +28,10 @@ The following packages are optional:
 1. Install using pip, including any optional packages you want...
 
 ```pip install djangorestframework
-pip install markdown       # Markdown support for the browsable API.
-pip install django-filter  # Filtering support```
+pip install markdown      
+pip install django-filter  ```
 
-2. Add 'rest_framework' to your INSTALLED_APPS setting（默认创建了Django项目，没有创建使用django-admin startproject xxx命令来创建，同时python manage.py migrate数据库，创建superuser等）.
+2. Add rest_framework to your INSTALLED_APPS setting（默认创建了Django项目，没有创建使用django-admin startproject xxx命令来创建，同时python manage.py migrate数据库，创建superuser等）.
 
 ```INSTALLED_APPS = (
     'rest_framework',
@@ -111,7 +111,7 @@ class GroupViewSet(viewsets.ModelViewSet):
         url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     ]```
 
-5. test
+6. test
 使用```python manage.py runserver```运行项目，浏览器打开```127.0.0.1```
 然后就可以看见登录页面了，如下：
 ![login](http://o7fm0rolr.bkt.clouddn.com/Screenshot%20-%202016%E5%B9%B406%E6%9C%8821%E6%97%A5%20-%2021%E6%97%B631%E5%88%8640%E7%A7%92.png)
