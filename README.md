@@ -50,9 +50,13 @@ pip install django-filter  # Filtering support```
 
 ```REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
+    
     # or allow read-only access for unauthenticated users.
+    
     'DEFAULT_PERMISSION_CLASSES': [
+    
         'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+        
         'PAGE_SIZE': 10
     ]
 }```
@@ -76,10 +80,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')```
         
 4. 修改views.py
-
-```from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+5. 
+    from django.contrib.auth.models import User, Group
+    from rest_framework import viewsets
+    from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -98,12 +102,17 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer```
 
 5. 修改urls
-
+    
     from django.conf.urls import url, include
+    
     from rest_framework import routers
+    
     from tutorial.quickstart import views
+    
     router = routers.DefaultRouter()
+    
     router.register(r'users', views.UserViewSet)
+    
     router.register(r'groups', views.GroupViewSet)
     # Wire up our API using automatic URL routing.
     # Additionally, we include login URLs for the browsable API.
