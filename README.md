@@ -1,3 +1,6 @@
+#### 注意
+发现README和普通md文件有不一样的地方。。蒙蔽了，列表全是错的（然后发现印象笔记都不能分享了，有关部门通知的。。
+
 #### Django REST framework tutorial
 知道有这个东西，干看文档没看出个一二三来，然后按照官方示例试了试，发现挺好理解的～
 
@@ -45,7 +48,6 @@ INSTALLED_APPS = (
 
 ##### example
 准备工作前边已经做完了，下面开始正式的例子，利用DR创建一个关于自带的User Model的API，实现的功能是创建user和获取user列表。
-
 1. DRF全局配置放在一个名为REST_FRAMEWORK的字典中，字典放在settings.py下面，如下：
 ```
     REST_FRAMEWORK = {
