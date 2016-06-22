@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05b8f1b6-4693-406b-ae42-936e2cbfbb8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quickstart/models.py" afterPath="$PROJECT_DIR$/quickstart/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quickstart/serializers.py" afterPath="$PROJECT_DIR$/quickstart/serializers.py" />
-    </list>
+    <list default="true" id="05b8f1b6-4693-406b-ae42-936e2cbfbb8b" name="Default" comment="" />
     <ignored path="djangorestframework_test.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
